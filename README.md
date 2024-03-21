@@ -2,7 +2,7 @@ This is a MERN stack developed application that interacts with IoT hardware in r
 
 The IT infrastructure utilizes MQTT for facilitating communication from sensors to software, transmitting data. Additionally, it leverages the Google Maps API to retrieve real-time location data for trash bins.
 
-Integrating JWT authentication for security purpsose, 
+Integrated JWT authentication for security purpsose, 
 
 FrontEnd :- ReactJS, HTML, CSS
 BackEnd :- Nodejs, Expressjs, MongoDB
