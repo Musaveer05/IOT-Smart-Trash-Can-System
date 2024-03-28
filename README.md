@@ -6,7 +6,7 @@ IOT Components :
 1) Esp8266 NodeMCU
 2) Ultrasonic sensor
 3) Battery 3.7 volt
-4) GSP Module
+4) GPS Module
 5) Jumper Wires Male to Female , Female to Male
 
 Integrated JWT authentication for security purpsose, 
