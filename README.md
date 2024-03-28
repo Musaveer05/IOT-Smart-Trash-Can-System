@@ -12,6 +12,7 @@ IOT Components :
 Integrated JWT authentication for security purpsose, 
 
 FrontEnd :- ReactJS, HTML, CSS
+
 BackEnd :- Nodejs, Expressjs, MongoDB
 
 
