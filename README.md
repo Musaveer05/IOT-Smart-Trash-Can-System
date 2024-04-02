@@ -8,6 +8,7 @@ IOT Components :
 3) Battery 3.7 volt
 4) GPS Module
 5) Jumper Wires Male to Female , Female to Male
+6) LED
 
 Integrated JWT authentication for security purpsose, 
 
