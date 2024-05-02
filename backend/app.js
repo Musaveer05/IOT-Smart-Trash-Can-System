@@ -8,14 +8,21 @@ const mongoose = require('mongoose')
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const cookie = require('cookie-parser')
+const http = require('http')
+const socketIo = require('socket.io')
 
-const dbUrl = process.env.DB_URL;
+
+const homeRouter = require('./routers/Home')
+
+const server = http.createServer(app);
+const io = socketIo(server);
+
+
+const dbUrl = `mongodb://localhost:27017/TrashCan` || process.env.DB_URL;
 
 mongoose.set('strictQuery', false);
 
 mongoose.connect(dbUrl, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
     serverSelectionTimeoutMS: 60000, // 1 minute timeout
 });
 
@@ -31,17 +38,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookie())
 
+const event = homeRouter.eventEmitter;
 
-// app.get('/Home', jwtAuthenticate,  (req,res) =>{
-//     res.send(req.rootUser);
-// })
+event.on('fieldValue', (fieldValue)=>{
+    // console.log('in app.js file',fieldValue)
+    io.emit('fieldValue', fieldValue)
+})
 
-app.use('/Home', require('./routers/Home'))
+app.use('/Home', homeRouter.router)
 app.use('/register', require('./routers/register'))
 app.use('/login', require('./routers/login'))
 
 
 const port = 3001;
-app.listen(port, ()=>{
+server.listen(port, ()=>{
     console.log(`Listening on port ${port}`)
 })
